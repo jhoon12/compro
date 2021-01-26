@@ -12,7 +12,7 @@ export const changePW = (payload : string) => ({
 type LoginAction = 
     | ReturnType<typeof changeID>
     | ReturnType<typeof changePW>;
-
+    
 export interface initialState{
     id : string;
     pw : string;
