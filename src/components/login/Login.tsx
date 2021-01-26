@@ -1,6 +1,5 @@
 import React, { useCallback } from "react";
-import * as S from "./LoginStyle";
-import { RootState } from "../../modules";
+import * as S from "./LoginStyle";  
 import { useHistory } from "react-router-dom";
 import { initialState } from "../../modules/login/login";
 import axios from "axios";
@@ -31,7 +30,7 @@ const Login: React.FC<LoginProps> = ({ dispatchID, dispatchPW, store }) => {
       console.log(res);
       if (res.status === 200) {
         localStorage.setItem("access_token", res.data.data.token);
-        history.push("/");
+        history.push("/main");
       }
     } catch (err) {
       alert(err.response.data.message);
