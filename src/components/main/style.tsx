@@ -27,6 +27,7 @@ export const th = styled.th`
 `
 export const td = styled.td`
   border:1px solid #444444;
+  text-align:center;
 `
 export const tr = styled.tr`
   border: 1px solid #444444;
