@@ -12,8 +12,22 @@ export const GlobalStyle = createGlobalStyle`
 export const Container = styled.div`
   width:100vw;
   height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center; 
+ 
 `;
+export const UrlInput = styled.input`
+  outline:none;
+  
+`;
+export const Table = styled.table`
+   border: 1px solid #444444;
+   border-collapse: collapse;
+`
+export const th = styled.th`
+  border: 1px solid #444444;
+`
+export const td = styled.td`
+  border:1px solid #444444;
+`
+export const tr = styled.tr`
+  border: 1px solid #444444;
+`
