@@ -41,18 +41,20 @@ const Main: React.FC<MainProps> = ({
       {store.label.length > 0 &&
       store.dataSet.length === store.data.length - 1 ? (
         <S.Table>
-          <S.tr>{test()}</S.tr>
-          {store.dataSet.map((ele: DataSet,index:number) => {
-            return (
-              <S.tr key={index}>
-                {findKeyName(ele.obj).map((ele: string, index:number) => (
-                  <S.td key={index}>{ele}</S.td>
-                ))}
-                <S.td>{ele.confidence}</S.td>
-                <S.td>{ele.class}</S.td>
-              </S.tr>
-            );
-          })}
+          <tbody>
+            <S.tr>{test()}</S.tr>
+            {store.dataSet.map((ele: DataSet, index: number) => {
+              return (
+                <S.tr key={index}>
+                  {findKeyName(ele.obj).map((ele: string, index: number) => (
+                    <S.td key={index}>{ele}</S.td>
+                  ))}
+                  <S.td>{ele.confidence}</S.td>
+                  <S.td>{ele.class}</S.td>
+                </S.tr>
+              );
+            })}
+          </tbody>
         </S.Table>
       ) : (
         <></>

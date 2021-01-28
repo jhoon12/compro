@@ -45,8 +45,6 @@ const MainContainer = () => {
     });
     arr.push(<S.th>class</S.th>);
     arr.push(<S.th>confidence</S.th>);
-    console.log(arr);
-    console.log(typeof arr);
     return arr;
   },[store, arr])
   const findKeyName = useCallback((obj: Obj): string[] => {
