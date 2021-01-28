@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from "react";
+import React, { useEffect, useCallback, FC } from "react";
 import { RootState } from "../modules/index";
 import {
   setLabel,
@@ -17,7 +17,7 @@ import BASEURL from "../baseURL";
 const MainContainer = () => {
   const dispatch = useDispatch();
   let obj: Obj = {};
-  let arr: any = [];
+  let arr: React.ReactElement[]= [];
   const store: initialState = useSelector(
     (state: RootState) => state.mainReducer
   );

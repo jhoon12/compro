@@ -8,7 +8,7 @@ interface MainProps {
   dataSetting: (data: string[][]) => void;
   labelSetting: (data: string[][]) => void;
   urlSetting: (data: React.ChangeEvent<HTMLInputElement>) => void;
-  test: () => string[];
+  test: () => React.ReactElement[];
   findKeyName: (data: Obj) => string[];
 }
 
