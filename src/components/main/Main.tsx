@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { ChangeEvent } from "react";
 import * as S from "./style";
 import CSVReader from "react-csv-reader";
 import { GlobalStyle } from "../login/LoginStyle";
-import { initialState } from "../../modules/main/main";
+import { initialState, Obj, DataSet } from "../../modules/main/main";
 interface MainProps {
   store: initialState;
-  dataSetting: (data: object) => void;
-  labelSetting: (data: object) => void;
+  dataSetting: (data: string[][]) => void;
+  labelSetting: (data: string[][]) => void;
   urlSetting: (data: React.ChangeEvent<HTMLInputElement>) => void;
+  test: () => string[];
+  findKeyName: (data: Obj) => string[];
 }
 
 const Main: React.FC<MainProps> = ({
@@ -15,37 +17,20 @@ const Main: React.FC<MainProps> = ({
   dataSetting,
   labelSetting,
   urlSetting,
+  test,
+  findKeyName,
 }) => {
-  let arr: any = [];
-  const test = () => {
-    store.label[0].map((ele) => {
-      // console.log(ele);
-      arr.push(<S.th>{ele}</S.th>);
-    });
-    arr.push(<S.th>class</S.th>);
-    arr.push(<S.th>confidence</S.th>);
-    return arr;
-  };
-  const findKeyName = (obj: object): string[] => {
-    //타입 인터페이스 수정
-    let arr = [];
-    // for(let key in Object){
-    //   arr.push()
-    // }
-    arr = Object.keys(obj);
-    return arr;
-  };
   return (
     <S.Container>
       <GlobalStyle />
       <S.UrlInput
         placeholder="url 끝자리 입력"
-        onChange={(e) => urlSetting(e)}
+        onChange={(e: ChangeEvent<HTMLInputElement>) => urlSetting(e)}
         value={store.url}
       />
       {store.url !== "" ? (
         <CSVReader
-          onFileLoaded={(data, fileInfo) => {
+          onFileLoaded={(data: string[][]) => {
             labelSetting(data.splice(0, 1));
             dataSetting(data);
           }}
@@ -57,18 +42,16 @@ const Main: React.FC<MainProps> = ({
       store.dataSet.length === store.data.length - 1 ? (
         <S.Table>
           <S.tr>{test()}</S.tr>
-
-          {store.dataSet.map((ele) => {
+          {store.dataSet.map((ele: DataSet,index:number) => {
             return (
-              <S.tr>
-                {findKeyName(ele.obj).map((ele) => (
-                  <S.td>{ele}</S.td>
+              <S.tr key={index}>
+                {findKeyName(ele.obj).map((ele: string, index:number) => (
+                  <S.td key={index}>{ele}</S.td>
                 ))}
                 <S.td>{ele.confidence}</S.td>
                 <S.td>{ele.class}</S.td>
               </S.tr>
             );
-            console.log(ele.class);
           })}
         </S.Table>
       ) : (
