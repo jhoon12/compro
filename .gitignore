@@ -4,6 +4,10 @@
 /node_modules
 /.pnp
 .pnp.js
+src/baseURL.js
+baseURL
+/baseURL 
+*.js
 # testing
 /coverage
 
@@ -21,7 +25,3 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-src/baseURL.js
-baseURL
-/baseURL 
-*.js
