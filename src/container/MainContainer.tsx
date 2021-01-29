@@ -17,7 +17,7 @@ import BASEURL from "../baseURL";
 const MainContainer = () => {
   const dispatch = useDispatch();
   let obj: Obj = {};
-  let arr: React.ReactElement[]= [];
+  let arr: React.ReactElement[] = [];
   const store: initialState = useSelector(
     (state: RootState) => state.mainReducer
   );
@@ -40,18 +40,18 @@ const MainContainer = () => {
     [setURL]
   );
   const test = useCallback(() => {
-    store.label[0].map((ele : string, index:number) => {
+    store.label[0].map((ele: string, index: number) => {
       arr.push(<S.th key={index}>{ele}</S.th>);
     });
     arr.push(<S.th>class</S.th>);
     arr.push(<S.th>confidence</S.th>);
     return arr;
-  },[store, arr])
+  }, [store, arr]);
   const findKeyName = useCallback((obj: Obj): string[] => {
-    let arr = [];//타입지정
+    let arr: string[] = []; //타입지정
     arr = Object.keys(obj);
     return arr;
-  },[])
+  }, []);
   useEffect(() => {
     (async () => {
       for (let i = 0; i < store.data.length - 1; i++) {
